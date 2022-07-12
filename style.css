@@ -32,19 +32,26 @@ body{
 
 #dynamic{
     position:relative;
+    display: inline-block;
+    /* 인라인과 블록의 속성을 모두 가짐, 영역이 콘텐츠 크기에 맞춰짐 */
 }
 /* relative: 자기 자신의 원래 위치(static일 때의 위치)를 기준으로 배치한다. */
 #dynamic::after{
     content:"";
-    position: absolute; /* absolute는 display요소를 block으로 바꾸므로 생략가능, 가상요소는 inline요소이므로 특정영역을 갖기위해block사용  */
+    position: absolute; /* absolute는 display요소를 block으로 바꾸므로 생략가능, 가상요소는 inline요소이므로 
+    특정영역을 갖기위해block사용  */
     /* absolute: 가장 가까운 위치에 있는 조상 요소를 기준으로 배치한다.
 
     조상 요소 위치를 기준으로 위쪽(top), 아래쪽(bottom), 왼쪽(left), 오른쪽(right)에서 얼마만큼 떨어질 지 결정한다.
     조상 중 Position을 가진 요소가 없다면 초기 컨테이닝 블록(<body>요소)를 기준으로 삼는다. (static을 제외한 값)
     문서 상 원래 위치를 잃어버린다. (아래에 있는 div가 해당 자리를 차지한다) */
     top:0;
-    right:0;/* 고정된 위치 */
+    right:-10px;/* 고정된 위치 */
     width:4px;
     height:100%;
     background-color:white;
+}
+
+#dynamic.active::after{
+    display: none;
 }
